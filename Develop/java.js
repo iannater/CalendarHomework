@@ -27,7 +27,7 @@ $(document).ready(function () {
         var time = $(this).parent().attr("id"); // hour- 9 split the string using.split after the - 
         localStorage.setItem(time, value);
     })
-    $("#clear").on("click",function(){
+    $("#clear").on("click", function () {
         localStorage.clear();
         alert("Refresh Page to See Fresh Calendar!")
     })
@@ -37,17 +37,17 @@ $(document).ready(function () {
         var currentHour = moment().hours();
         //var calculatedHour = $(".saveBtn").parent().attr("id").split("-")[1];
         for (var i = 9; i < 18; i++) {
-            if (i===currentHour){
-                $("#hour-"+i).children(".txtArea").addClass("present")
-            
+            if (i === currentHour) {
+                $("#hour-" + i).children(".txtArea").addClass("present")
+
             }
-            else if (i<currentHour){
-                $("#hour-"+i).children(".txtArea").addClass("past")
+            else if (i < currentHour) {
+                $("#hour-" + i).children(".txtArea").addClass("past")
 
             }
 
-            else{
-                $("#hour-"+i).children(".txtArea").addClass("future")
+            else {
+                $("#hour-" + i).children(".txtArea").addClass("future")
             }
         }
     };
