@@ -17,17 +17,12 @@
 // if time block is current make it red
 //future time blocks are blue
 //to make these changes we need to add and remove class name
-
-
-
-
 $(document).ready(function () {
     //This displays the current day
     $("#currentDay").html(moment().format("dddd, MMMM Do"));
 
 
     $(".saveBtn").on("click", function () {
-
         var value = $(this).siblings(".txtArea").val();
         var time = $(this).parent().attr("id"); // hour- 9 split the string using.split after the - 
         localStorage.setItem(time, value);
@@ -40,19 +35,22 @@ $(document).ready(function () {
     function hourUpdate() {
         //use moment to get current hour
         var currentHour = moment().hours();
-        var calculatedHour = $(".saveBtn").parent().attr("id").split("-")[1];
-        if (currentHour===calculatedHour){
-            alert("Do work son")
+        //var calculatedHour = $(".saveBtn").parent().attr("id").split("-")[1];
+        for (var i = 9; i < 18; i++) {
+            if (i===currentHour){
+                $("#hour-"+i).children(".txtArea").addClass("present")
+            
+            }
+            else if (i<currentHour){
+                $("#hour-"+i).children(".txtArea").addClass("past")
 
-            // need to make an array of each hour and then loop through them.
+            }
+
+            else{
+                $("#hour-"+i).children(".txtArea").addClass("future")
+            }
         }
-        else{
-
-            alert("time to boogey")
-        }
-        console.log(calculatedHour)
-
-    }
+    };
     hourUpdate();
 
 
